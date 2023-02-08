@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>JS REGISTER</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h2>Register</h2>
+    <form method="POST" name="regform" id="regform" autocomplete="off">
+      <div class="user-box">
+        <input type="text" id="user" name="user" title="Enter Text Only" required>
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input type="email" id="mail" name="mail" title="Enter correct email" required>
+        <label>E-mail</label>
+      </div>
+      <div class="user-box">
+        <input type="phone" id="mob" name="mob" title="Enter 10 digit phone number" required>
+        <label>Phone</label>
+      </div>
+      <div class="user-box">
+        <input type="password" id="pass" name="pass"
+          title="Enter password consist of atleast 1 digit, 1 special character, letter" required>
+        <label>Password</label>
+      </div>
+      <center>
+        <input type="button" onclick="validateReg();" value="Register">
+      </center>
+      <hr />
+      <center class="join">
+        New to here?
+        <a href="./index.html"> Login here</a>
+      </center>
+    </form>
+  </div>
+
+  <script>
+    function validateReg() {
+      var uname = document.regform.user.value;
+      var upattern = /^[A-Za-z]{4,12}$/;
+      var umatch = uname.match(upattern);
+      var email = document.regform.mail.value;
+      var epattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      var ematch = email.match(epattern);
+      var umob = document.regform.mob.value;
+      var mpattern = /^[0-9]{10}$/;
+      var mmatch = umob.match(mpattern);
+      var upass = document.regform.pass.value;
+      var ppattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+      var pmatch = upass.match(ppattern);
+
+      //username validation
+      if (uname.length <= 0) {
+        console.log("username is required");
+        document.regform.user.focus();
+        return false;
+      } else
+        //email validation 
+        if (email.length <= 0) {
+          console.log("email is required");
+          document.regform.mail.focus();
+          return false;
+        } else
+          //mobile validation
+          if (umob.length <= 0) {
+            console.log("mobile is required");
+            document.regform.mob.focus();
+            return false;
+          } else
+            //password validation
+            if (upass.length <= 0) {
+              console.log("password is required");
+              document.regform.pass.focus();
+              return false;
+            }
+
+      //check the function return true or not
+      if (uname === '' || upass === '' || email === '' || umob === '') {
+        alert("Please fill all details");
+        return false;
+      } else if (umatch && pmatch && mmatch && ematch) {
+        register(uname, email, upass, umob);
+      } else {
+        alert("Please enter correct data");
+        return false;
+      }
+    }
+  </script>
+  <script src='./js/index.js'></script>
+</body>
+
+</html>

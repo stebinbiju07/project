@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>JS HOME</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body onload="onbodyload();">
+
+  <div class="navbar">
+    <div class="logo">
+      <h1>JS HOME</h1>
+    </div>
+    <div class="nav_links">
+      <a class="active nav_link" id="active">Active: Loading...</a>
+      <a onclick="showPro();" class="nav_link" id="names"></a>
+      <a onclick="showHome();" class="nav_link">Home</a>
+      <a onclick="logout();" class="nav_link">Logout</a>
+    </div>
+  </div>
+
+  <div id="home" class="section">
+    <table>
+      <caption>
+        <a onclick="apiData();" class="active nav_link" id="loaddata">Load Data</a>
+      </caption>
+      <thead>
+        <tr scope="row" class="marg">
+          <th scope="col" colspan="6">PERSONAL</th>
+          <th scope="col" colspan="6">ADDRESS</th>
+          <th scope="col" colspan="3">COMPANY</th>
+        </tr>
+      </thead>
+      <thead>
+        <tr scope="row">
+          <th scope="col">ID</th>
+          <th scope="col">NAME</th>
+          <th scope="col">USERNAME</th>
+          <th scope="col">E-MAIL</th>
+          <th scope="col">PHONE</th>
+          <th scope="col">WEBSITE</th>
+          <th scope="col">STREET</th>
+          <th scope="col">SUITE</th>
+          <th scope="col">CITY</th>
+          <th scope="col">ZIPCODE</th>
+          <th scope="col">LATITUDE</th>
+          <th scope="col">LONGITUDE</th>
+          <th scope="col">NAME</th>
+          <th scope="col">PHRASE</th>
+          <th scope="col">SERVICE</th>
+        </tr>
+      </thead>
+      <tbody id="tdata">
+      </tbody>
+    </table>
+  </div>
+
+  <div id="profile" class="section">
+  </div>
+
+  <script>
+    document.getElementById("names").innerText += "Hi, " + sessionStorage.getItem("name");
+  </script>
+  <script src='./js/index.js'></script>
+</body>
+
+</html>

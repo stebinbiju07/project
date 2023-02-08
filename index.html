@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>JS LOGIN</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h2>Login</h2>
+    <form method="POST" name="logform" id="logform" autocomplete="off">
+      <div class="user-box">
+        <input type="text" id="user" name="user" title="Enter Username Only" required>
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input type="password" id="pass" name="pass" title="Enter Password Only" required>
+        <label>Password</label>
+      </div>
+      <center>
+        <input type="button" onclick="validateLog();" value="Login">
+      </center>
+      <hr />
+      <center class="join">
+        New to here?
+        <a href="./register.html"> Register here</a>
+      </center>
+    </form>
+  </div>
+
+  <script>
+    if (sessionStorage.getItem("name") != null) {
+      window.location.href = "./home.html";
+    }
+    function validateLog() {
+      var uname = document.logform.user.value;
+      var upattern = /^[A-Za-z]{4,12}$/;
+      var umatch = uname.match(upattern);
+      var upass = document.logform.pass.value;
+      var ppattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+      var pmatch = upass.match(ppattern);
+
+      //username validation
+      if (uname.length <= 0) {
+        console.log("username is required");
+        document.logform.user.focus();
+      } else
+        //password validation
+        if (upass.length <= 0) {
+          console.log("password is required");
+          document.logform.pass.focus();
+        }
+
+      //check the function return true or not
+      if (uname === '' || upass === '') {
+        alert("Please fill all details");
+        return false;
+      } else if (umatch && pmatch) {
+        login(uname, upass);
+      } else {
+        alert("Please enter correct data");
+        return false;
+      }
+    }
+  </script>
+  <script src='./js/index.js'></script>
+</body>
+
+</html>
